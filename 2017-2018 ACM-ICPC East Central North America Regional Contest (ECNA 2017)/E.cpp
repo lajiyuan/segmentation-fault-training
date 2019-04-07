@@ -13,7 +13,6 @@ const int maxn = 5e2+5;
 
 bool is[maxn][maxn], has[maxn][maxn];
 unordered_map<string, int> mp;
-
 int main()
 {
     //freopen("E-3.in", "r", stdin);
@@ -49,16 +48,6 @@ int main()
 
     for(int i = 1; i <= cnt; i++)   is[i][i] = 1;
 
-    /*
-    for(int i = 1; i <= cnt; i++)
-    {
-        for(int j = 1; j <= cnt; j++)
-        {
-            dbg3(i, j, rela[i][j]);
-        }
-    }
-    */
-
     for(int k = 1; k <= cnt; k++)
     {
         for(int i = 1; i <= cnt; i++)
@@ -72,16 +61,6 @@ int main()
             }
         }
     }
-
-    /*
-    for(int i = 1; i <= cnt; i++)
-    {
-        for(int j = 1; j <= cnt; j++)
-        {
-            dbg3(i, j, rela[i][j]);
-        }
-    }
-    */
 
     for(int i = 1; i <= m; i++)
     {
@@ -105,4 +84,30 @@ int main()
 
     return 0;
 }
+
+//题意
+/*
+给你两种关系 is-a 和 has-a，满足如下性质：
+
+(1)is-a 满足自反性;
+
+(2) 传递性：
+
+若 A is-a B 且 B is-a C，则 A is-a C；
+
+若 A has-a B 且 B has-a C，则 A has-a C；
+
+若 A has-a B 且 B is-a C，则 A has-a C；
+
+若 A is-a B 且 B has-a C，则 A has-a C.
+
+给定 n 个上述类型的关系，之后给定 m 个查询，对于每一个查询，判断关系是否成立。
+*/
+
+/*做法
+
+
+对于 `is-a` 关系和 `has-a` 关系，按照上面的规则分别传递闭包即可。时间复杂度：O(n^3)
+
+*/
 
